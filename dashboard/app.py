@@ -461,7 +461,24 @@ if module == "Engagement & Churn Overview":
             },
             category_orders={"Engagement_Segment": ENGAGEMENT_ORDER},
         )
-        fig_dist.update_layout(showlegend=False)
+        fig_dist.update_layout(
+            showlegend=False,
+            height=420,
+            margin=dict(l=60, r=30, t=70, b=90),
+        )
+
+        fig_dist.update_xaxes(
+            tickmode="array",
+            tickvals=ENGAGEMENT_ORDER,
+            ticktext=[
+                "Active<br>Engaged",
+                "Active but<br>Low-Product",
+                "Inactive<br>High-Balance",
+                "Inactive<br>Disengaged",
+            ],
+            tickangle=0,
+            automargin=True,
+        )
         st.plotly_chart(fig_dist, width="stretch")
 
     with right:
@@ -477,7 +494,24 @@ if module == "Engagement & Churn Overview":
             },
             category_orders={"Engagement_Segment": ENGAGEMENT_ORDER},
         )
-        fig_churn.update_layout(showlegend=False)
+        fig_churn.update_layout(
+            showlegend=False,
+            height=420,
+            margin=dict(l=60, r=30, t=70, b=90),
+        )
+
+        fig_churn.update_xaxes(
+            tickmode="array",
+            tickvals=ENGAGEMENT_ORDER,
+            ticktext=[
+                "Active<br>Engaged",
+                "Active but<br>Low-Product",
+                "Inactive<br>High-Balance",
+                "Inactive<br>Disengaged",
+            ],
+            tickangle=0,
+            automargin=True,
+        )
         st.plotly_chart(fig_churn, width="stretch")
 
     st.subheader("Engagement Segment Summary")
